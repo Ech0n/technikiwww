@@ -1,0 +1,53 @@
+body{
+    background-color: rgb(248, 255, 255);
+    justify-content: center;
+    width: device-width;
+}
+@media only screen and (max-width:900px){
+    
+}
+#gallery{
+    display: flex;    
+    justify-content: space-evenly;
+}
+img{
+    margin: 10px
+}
+.arrow{
+    font-size: 40px;
+}
+
+header{
+
+    display: flex;
+    flex-direction: row;
+}
+.headerElement{
+    justify-content: center;
+
+    display: flex;
+}
+h1{
+    margin-left: 5%;
+}
+nav{
+    flex-grow: 1;
+}
+a{
+    margin:10px;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(202, 221, 221);
+    border-width: 2px;
+    border-radius: 5px;
+    border-style:solid;
+    padding: 6px 4px;
+    text-align: center;
+    
+    border-color: rgb(151, 172, 172);
+}
+#content{
+    max-width: 90%;
+    min-width: 60%;
+    margin: 10px 5% 10px 5%;
+}
