@@ -1,55 +1,47 @@
-var imgslots = 0
+const srcs = ["dali.jpg","cezanne_mont_sainte_victorie.jpg","unknown.jpg","mattise.jpg","monet.jpg","monet_sunflowers.jpg","van_gogh_sunflowers.jpg"]
+const path = "/src/img/obrazy/"
+var curimg = 0
+
 var left,center,right
-
-function adjustToScreenWidth(){
-    if(window.screen.width>900){
-        imgslots=3
-        imgbox = document.getElementById("imgbox")
-        imgbox.innerHTML = "<img src=\"https://picsum.photos/300\" id=\"left_img\" /><img src=\"https://picsum.photos/300\" id=\"center_img\" /> <img src=\"https://picsum.photos/300\" id=\"right_img\" />"
-
-    }else{
-        imgslots=1
-
-        imgbox = document.getElementById("imgbox")
-        imgbox.innerHTML = "<img src=\"https://picsum.photos/300\" id=\"center_img\" />"
-
-    }
-}
-
-addEventListener('resize', (event) => {
-   adjustToScreenWidth();
-});
+var galeria;
 
 function onGalleryLoad(){
-    console.log("zaladowano galerie")
-    //generuj liczbe zdjec w rzedzie
-    //dla telefonow 1, dla wiekszych ekranow 3
-    adjustToScreenWidth();
 
+    galeria = document.getElementById("gallery")
+    box = document.getElementById("image");
+    box.src = path+srcs[curimg]
 
 }
 
-function nextimg(){
-    left = document.getElementById("left_img");
-    right = document.getElementById("center_img");    
-    center = document.getElementById("right_img");    
 
-    right.src = center.src;
-    center.src = left.src;
 
-    //TODO: nastepne zdjecie z zaladowac z listy zdjec po kolei
-    left.src = "https://picsum.photos/id/"+Math.floor(Math.random() * 101).toString()+"/300/300";
+function hidePopup(){
+    el = document.getElementById("popup-container")
+    el.style.display = "none";
+}
 
+
+function onImgClick(){
+    
+    popup = document.getElementById("popup-container");
+    imag = document.getElementById("img-in-pop") 
+    imag.src = path+srcs[curimg]
+    popup.style.display = "flex";
+
+}
+
+
+
+function nextimg(){  
+    box = document.getElementById("image");
+    curimg= (Math.abs(curimg+1))%srcs.length
+    box.src = path+srcs[curimg]
 }
 function previmg (){
-    left = document.getElementById("left_img");
-    right = document.getElementById("center_img");    
-    center = document.getElementById("right_img");    
-
-    left.src = center.src;
-    center.src = right.src;
-
-    //TODO: nastepne zdjecie z zaladowac z listy zdjec po kolei
-    right.src = "https://picsum.photos/id/"+Math.floor(Math.random() * 101).toString()+"/300/300"
-
+    box = document.getElementById("image");
+    if(curimg>0)
+    curimg= (curimg-1)%srcs.length
+    else
+    curimg = srcs.length-1
+    box.src =path+srcs[curimg]
 }
