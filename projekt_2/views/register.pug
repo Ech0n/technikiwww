@@ -1,0 +1,24 @@
+doctype html
+head
+    title Zarejestruj sie
+    meta(name='description' content='druga strona na technikach www')
+    meta(charset='utf-8/')
+    script(type='module' src=js)
+    meta(name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+body
+    #content
+        a(href="/")|&lt       
+
+        #login-box
+            h2 REJESTRACJA
+            form#formularz(action="/api/register", method="post") 
+                label(for="email") email: 
+                input#name.form(type="text",placeholder="email",name="email")
+                label(for="name") name: 
+                input#name.form(type="text",placeholder="name",name="name")
+                label(for="password") password: 
+                input#name.form(type="password",placeholder="password",name="password")
+                input.submit-button(type="submit",value="Zarejestruj sie")
+            label Masz juz konto?
+            a.submit-button(href="/login"  )  Zaloguj sie

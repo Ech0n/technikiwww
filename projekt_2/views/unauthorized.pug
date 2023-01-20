@@ -1,0 +1,11 @@
+extends layout 
+
+block unauthorized 
+    h1 401
+    p
+    | Unauthorized
+
+block nav-buttons 
+    a(href='/') Strona Glowna
+    a(href='/galeria')  Galeria
+    a(href='/login')  zaloguj

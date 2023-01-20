@@ -1,0 +1,16 @@
+extends layout
+    
+block content
+    h1 #{name}
+    p
+    |To jest strona uzytkownika
+    #grid-container 
+
+block nav-buttons 
+    a(href='/') Strona Glowna
+    a(href='/galeria')  Galeria
+    if username
+        a.active-link(href='/user/'+username) #{username}
+        a(href='/api/logout') wyloguj
+    else
+        a(href='/login')  zaloguj

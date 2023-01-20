@@ -1,0 +1,292 @@
+body{
+    background-color: aliceblue;
+    justify-content: center;
+    width: 100vw;
+    margin:0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+a{
+    text-decoration: none;
+}
+#login-box> a{
+    color: black;
+    background-color: aliceblue;
+    border-width: 1px;
+    border-radius: 15px;
+    border-style: solid solid;
+    padding: 8px 25px 2px 25px;
+    height:20px;
+    border-color: rgb(151, 172, 172);
+    display: block;
+    text-align: center;
+}
+
+float{
+    float:right;
+    margin:10px 10px 0px 10px;
+}
+p{
+    text-align: justify;
+    text-indent: 30pt;
+}
+footer{
+    border-top-style: solid;
+    border-color: rgb(214, 225, 235);
+    border-width: 2px;
+
+    bottom: 0;
+    padding: 20px 0px;
+    margin: 0px 5%;
+    
+    text-align: center;
+}
+#content{
+
+    flex:1;
+    max-width: 90%;
+    min-width: 60%;
+    display: block;
+}
+#content{
+    padding: 10px 5% 10px 5%;
+    background-image: radial-gradient(white,aliceblue);
+}
+#gallery{
+    border-top-style: dotted ;
+    border-color: rgb(214, 225, 235);
+    border-width: 2px;
+    margin: 0px;
+    padding: 10px 0px;
+    height: 400px;
+    display: flex; 
+    position:relative;   
+    justify-content: center;
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+}
+.arrow{
+    position:absolute;
+    text-align: center;
+    width:7vw;  
+    height: 100%;
+    font-size: 40px;
+    font-weight: 200;
+
+    text-shadow: -1px 1px 1px white;
+    /* background-color: rgb(146, 141, 141,0.2) ; */
+    display: block;
+}
+.arrow:hover{
+    cursor: pointer;
+}
+#arrow-right{
+    right:0%;
+}
+#arrow-left{
+    left:0%;
+}
+.arrow > p{
+    position:relative;
+    text-indent: 0px;
+    text-align:center;
+    opacity: 1;
+    top:42%;
+    transform: scaleY(3);
+    margin:0px;
+}
+#imgbox{
+    display: flex;
+    position:relative;
+    justify-content: center;
+    align-content: center;
+    flex:0 1 auto;
+}
+img{
+    box-shadow: 2px 6px 5px black;
+    max-height: 100%;
+    align-self: center;
+    max-width: 90vw;
+    margin: 0px;
+    /* Cos typu ramka  */
+    /* border: 5px inset rgb(187, 142, 58); */
+}
+#painting-title{
+    
+    text-align:center;
+    font-size: large;
+    margin:5px 5%;
+    font-weight: 500;
+    bottom:5px;
+    border-bottom-style: dotted ;
+    border-color: rgb(214, 225, 235);
+    border-width: 2px;
+}
+
+#popup-container{
+    -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently*/
+    position: fixed;
+    top:0;
+    left:0;
+    margin:0px;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    background-color: rgba(80, 80, 80, 0.5);
+    pointer-events: auto; 
+    align-items: flex-start;   
+}
+#img-popup{
+    align-self:center;
+    position:relative;    
+}
+#img-popup > img{
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: 0px 7px 10px black;
+}
+
+#closebtn{
+    position:absolute;
+    top:0px;
+    right:10px;
+    font-size: 40px;
+    text-shadow: 1px 0px 0px rgb(182, 182, 182), -1px 0px 0px rgb(182, 182, 182);
+}
+#closebtn:hover{
+    cursor:pointer;
+}
+header{
+
+    display: flex;
+    flex-direction: row;
+    border-bottom-style: solid;
+    border-color: rgb(207, 226, 226);
+    border-width: 2px;
+    margin:0px 5%;
+}
+.headerElement{
+    gap:40px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+h1{
+    color:rgb(90, 107, 107);
+    padding:10px;
+    margin-right:15px;
+    font-size: 40px;
+}
+
+nav{
+    flex-grow: 1;
+}
+.headerElement>a{
+    flex-grow: 1;
+    text-decoration: none;
+    color: black;
+    background-color: aliceblue;
+    border-width: 2px;
+    border-radius: 9px;
+    border-style: solid none;
+    padding: 14px 2px 2px 2px;
+    height:30px;
+    border-color: rgb(151, 172, 172);
+    display: block;
+    text-align: center;
+}
+a:hover{
+    background-color: rgb(226, 235, 243);
+}
+.active-link{
+    color: rgb(34, 121, 221);
+}
+
+
+#grid-container{
+    justify-content: center;
+    width: 100%;
+    display:grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 300px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+.grid-item{
+    justify-self: center;
+    justify-content:center;
+    object-fit: fill;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    margin:2px;
+}
+.grid-item > img{
+    justify-self: center;
+    align-self: center;
+    max-width: 100%;
+    max-height: 80%;
+    text-align: center;
+
+}
+.img-title{
+    text-indent: 0px;
+    text-align: center;
+}
+    
+
+@media only screen and (max-width:768px){
+    #grid-container{
+        grid-template-columns: 90%;
+    }
+    header{
+        flex-direction: column;
+    }
+    a{
+        width:90%;
+        margin-bottom: 7px;
+    }    
+    .headerElement{
+        gap:5px;
+        flex-direction: column;
+        align-items: center;
+    }
+    img{
+        object-fit:scale-down;
+    }
+}
+
+@media only screen and (min-width:1200px){
+    #grid-container{
+        grid-template-columns: 20% 20% 20% 20%;
+    }
+}
+
+#login-box{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+}
+
+#formularz{
+    display: flex;
+    flex-direction: column;
+}
+#formularz > *{
+    margin:5px;
+}

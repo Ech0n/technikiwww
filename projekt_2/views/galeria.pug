@@ -1,0 +1,15 @@
+extends layout
+    
+block content
+    #content
+        #grid-container 
+
+block nav-buttons 
+    a(href='/') Strona Glowna
+    a.active-link(href='/galeria')  Galeria
+    if username
+        a(href='/user/'+username) #{username}
+        a(href='/api/logout') wyloguj
+
+    else
+        a(href='/login')  zaloguj

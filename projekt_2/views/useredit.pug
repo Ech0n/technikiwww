@@ -1,0 +1,22 @@
+extends layout
+    
+block content
+    #content
+        h1 #{name}
+        p
+        |To jest strona zalogowanego uzytkownika
+        p
+        |Wyslij zdjecie
+        form(action = "/user/"+username+"/upload" method="post" enctype="multipart/form-data")
+            input(type = "file" id="photo" name ="photo")
+            input(type="submit" value="Wyslij")
+    
+
+block nav-buttons 
+    a(href='/') Strona Glowna
+    a(href='/galeria')  Galeria
+    if username
+        a.active-link(href='/user/'+username) #{username}
+        a(href='/api/logout') wyloguj
+    else
+        a(href='/login')  zaloguj
