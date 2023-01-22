@@ -12,13 +12,13 @@ body
 
         #login-box
             h2 REJESTRACJA
-            form#formularz(action="/api/register", method="post") 
+            form#formularz
                 label(for="email") email: 
                 input#name.form(type="text",placeholder="email",name="email")
                 label(for="name") name: 
-                input#name.form(type="text",placeholder="name",name="name")
+                input#pass.form(type="text",placeholder="name",name="name")
                 label(for="password") password: 
-                input#name.form(type="password",placeholder="password",name="password")
+                input#submit.form(type="password",placeholder="password",name="password")
                 input.submit-button(type="submit",value="Zarejestruj sie")
             label Masz juz konto?
             a.submit-button(href="/login"  )  Zaloguj sie

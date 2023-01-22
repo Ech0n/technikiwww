@@ -33,7 +33,7 @@ router.get('/user/:username',(req,res)=>{
 })
 
 
-
+//Sciezka zwracajaca w odpowiedzi uzytkownikowi tablice zdjec danego uzytkownika
 router.get('/getphotos/:user', async (req,res)=>{
 
   username = req.params.user
@@ -63,6 +63,7 @@ router.get('/getphotos/:user', async (req,res)=>{
 
 })
 
+//multer - middleware umozliwiajacy obsluge odbierania duzych plikow (w tym przypadku zdjec) od klienta
 var upload = multer({
   dest: path+"/temporary",
   onFileUploadComplete: (file)=>{
@@ -75,6 +76,7 @@ var upload = multer({
   }
 });
 
+//Sciezka ktora pozwala uzytkownikowi na wyslanie zdjecia do serwera
 router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
   console.log("Trying to save an img",req.body)
 
@@ -87,11 +89,14 @@ router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
     res.end()  
     return
   }
+
   const filepath = path+"users/"+req.session.username
+  //Sprawdza czy istnieje sciezka do folderu w ktorym mozna zapisac zdjecia jezeli nie to ja tworzy
   if (!fs.existsSync(filepath)){
     fs.mkdirSync(filepath);
   }
 
+  //Zapis zdjecia na dysku odbywa sie po przez zmienienie nazwy sciezki(razem z nazwa pliku) z folderu tymczasowego do docelowego
   if( pathlib.extname(req.file.originalname).toLowerCase() == ".png" || pathlib.extname(req.file.originalname).toLowerCase() == ".jpg"  ){
     fs.rename("./"+req.file.path  , filepath+"/"+req.file.originalname, err=>{
       console.log("Saving",req.file.path,filepath)
@@ -101,6 +106,7 @@ router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
       }
     })
   }else{
+    //Jezeli format pliku to nie png/jpg to go nie zapisujemy
     fs.unlink(req.file.path,err=>{
       console.log("Not saved")
       if(err)  handleError(err,res)
