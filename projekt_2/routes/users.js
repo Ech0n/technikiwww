@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require("multer")
 var fs = require('fs');
-pathlib = require("path")
+const pathlib = require("path")
 
 const handleError = (err, res) => {
   console.log(err)
@@ -11,16 +11,15 @@ const handleError = (err, res) => {
     .contentType("text/plain")
     .end("Cos poszlo nie tak");
 };
+
 const path = "./public/images/"
-
-
 
 /* GET users listing. */
 router.get('/user/:username',(req,res)=>{
   if(req.session.authorized)
   {
     if(req.session.username == req.params.username){
-      res.render('useredit', { js: '/javascripts/galeria.js',  username:req.session.username,user:req.params.username});
+      res.render('useredit', { js: '/javascripts/galeria.js', username:req.session.username,user:req.params.username});
     }else
     {
     res.render('user', { js: '/javascripts/galeria.js' ,username:req.session.username,user:req.params.username});
@@ -115,6 +114,28 @@ router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
       }
     })
   }
+})
+
+//Sciezka umozliwa usuniecie zdjecia
+router.delete('/delete/:photo', function(req, res, next) {
+  var folder = path+"users/"+req.session.username
+  fs.readdir(folder,(err,photos)=>{
+    if(err){
+      console.log("Napotkano problem przy usuwaniu pliku!")
+      req.status(500).end()
+      return
+    }
+    photos.forEach(photo=>{
+      if(req.params.photo == pathlib.parse(photo).name)
+      {
+        fs.unlink((folder+"/"+photo),(err)=>{
+          if(err)  handleError(err,res)
+          else res.status(200).end("File Deleted")
+        })
+      }
+    })
+    
+  })
 })
 
 module.exports = router;

@@ -1,5 +1,4 @@
 extends layout
-    
 block content
     #content
         div#profiletop
@@ -12,15 +11,17 @@ block content
             |Wyslij zdjecie &nbsp;
             input(type = "file" id="photo" name ="photo")
             input(type="submit" value="Wyslij")
+        div.button#deletebutton
+            |Kliknij tutaj aby wlaczyc tryb usuwania zdjęć
+            
         p( id="galeria-label")
-        |galeria uzytkownika:
-
+            |galeria uzytkownika:
+        
         #grid-container 
         #popup-container
             #img-popup
                 img#img-in-pop(src='' onclick='event.stopPropagation()')
-                span#closebtn x
-                
+                span#closebtn x                
     
 
 block nav-buttons 

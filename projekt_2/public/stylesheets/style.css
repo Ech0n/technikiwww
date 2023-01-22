@@ -169,6 +169,7 @@ img{
 #closebtn:hover{
     cursor:pointer;
 }
+
 header{
 
     display: flex;
@@ -346,4 +347,23 @@ a:hover{
 
 .ceneteredparagraph{
     text-align: center;
+}
+.button{
+    padding:5px;
+    border-radius: 5px;
+    background-color: rgb(209, 217, 224);
+    margin:10px;
+    text-align: center;
+}
+.button:hover{
+    cursor: pointer;
+}
+.activeButton{
+    padding:5px;
+    border-radius: 5px;
+    background-color: rgb(209, 217, 224);
+    margin:10px;
+    text-align: center;
+    background-color: rgb(235, 103, 103);
+
 }
