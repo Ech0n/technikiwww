@@ -78,6 +78,11 @@ var upload = multer({
 //Sciezka ktora pozwala uzytkownikowi na wyslanie zdjecia do serwera
 router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
   console.log("Trying to save an img",req.body)
+  if(!req.file){
+    console.log("Nie podano pliku!")
+    res.render('error',{message:"Nie wybrano pliku do wyslania!",error:{status:404,stack:0}})
+    return;
+  }
 
   //Sprawdza czy poprawny uzytkownik probuje wyslac zdjecie
   if(!req.session.authorized){

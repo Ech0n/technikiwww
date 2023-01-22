@@ -96,7 +96,7 @@ router.post('/api/register', function(req, res, next) {
                     console.log("New user reigstered")
                     req.session.authorized = true
                     req.session.username = req.body.name
-                    res.redirect("../")
+                    res.status(200).send("Pomyslnie zalogowano!")
 
                 })
                 

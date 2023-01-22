@@ -34,6 +34,14 @@ window.addEventListener("load", () => {
             }
         };
 
+        XHR.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText)
+                if(this.responseText=="Pomyslnie zalogowano!"){
+                    window.location.replace("../");
+                }
+            }
+        };
         XHR.open("POST", "/api/register",true);
         XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         XHR.send(JSON.stringify(new_data));
