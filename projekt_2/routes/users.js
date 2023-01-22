@@ -97,7 +97,7 @@ router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
   const filepath = path+"users/"+req.session.username
   //Sprawdza czy istnieje sciezka do folderu w ktorym mozna zapisac zdjecia jezeli nie to ja tworzy
   if (!fs.existsSync(filepath)){
-    fs.mkdirSync(filepath);
+    fs.mkdirSync(filepath,{recursive:true});
   }
 
   //Zapis zdjecia na dysku odbywa sie po przez zmienienie nazwy sciezki(razem z nazwa pliku) z folderu tymczasowego do docelowego
