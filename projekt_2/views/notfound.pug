@@ -7,7 +7,7 @@ block unauthorized
 
 block nav-buttons 
     a(href='/') Strona Glowna
-    a(href='/galeria')  Galeria
+    a(href='/listusers')  Uzytkownicy
     if username
         a.active-link(href='/user/'+username) #{username}
         a(href='/api/logout') wyloguj

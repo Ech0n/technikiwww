@@ -1,14 +1,25 @@
 extends layout
     
 block content
-    h1 #{name}
-    p
-    |To jest strona uzytkownika
-    #grid-container 
+    #content
+        div#profiletop
+            h1 #{user}
+            p
+                |To jest strona uzytkownika #{user}
+        p( id="galeria-label")
+            | galeria uzytkownika:
+        #grid-container 
+        #popup-container
+            #img-popup
+                img#img-in-pop(src='' onclick='event.stopPropagation()')
+                span#closebtn x
+                
+    
+
 
 block nav-buttons 
     a(href='/') Strona Glowna
-    a(href='/galeria')  Galeria
+    a(href='/listusers')  Uzytkownicy
     if username
         a.active-link(href='/user/'+username) #{username}
         a(href='/api/logout') wyloguj

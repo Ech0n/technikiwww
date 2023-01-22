@@ -1,0 +1,19 @@
+extends layout
+    
+block content
+    #content
+        p.ceneteredparagraph
+            | Mozesz przejsc do profilu uzytkownika klikajac jego nazwe na liscie.
+        p.ceneteredparagraph
+            | Lista uzytkownikow:
+        #list-container
+
+block nav-buttons 
+    a(href='/') Strona Glowna
+    a.active-link(href='/listusers')  Uzytkownicy
+    if username
+        a(href='/user/'+username) #{username}
+        a(href='/api/logout') wyloguj
+
+    else
+        a(href='/login')  zaloguj

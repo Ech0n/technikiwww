@@ -2,19 +2,30 @@ extends layout
     
 block content
     #content
-        h1 #{name}
-        p
-        |To jest strona zalogowanego uzytkownika
-        p
-        |Wyslij zdjecie
-        form(action = "/user/"+username+"/upload" method="post" enctype="multipart/form-data")
+        div#profiletop
+            h1 #{user}
+            p
+            |To jest strona uzytkownika #{user}
+            
+        form(action = "/user/"+username+"/upload" method="post" enctype="multipart/form-data" id="upload-form")
+            p
+            |Wyslij zdjecie &nbsp;
             input(type = "file" id="photo" name ="photo")
             input(type="submit" value="Wyslij")
+        p( id="galeria-label")
+        |galeria uzytkownika:
+
+        #grid-container 
+        #popup-container
+            #img-popup
+                img#img-in-pop(src='' onclick='event.stopPropagation()')
+                span#closebtn x
+                
     
 
 block nav-buttons 
     a(href='/') Strona Glowna
-    a(href='/galeria')  Galeria
+    a(href='/listusers')  Uzytkownicy
     if username
         a.active-link(href='/user/'+username) #{username}
         a(href='/api/logout') wyloguj

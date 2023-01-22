@@ -16,19 +16,51 @@ const path = "./public/images/"
 
 
 /* GET users listing. */
-router.get('/:username',(req,res)=>{
+router.get('/user/:username',(req,res)=>{
   if(req.session.authorized)
+  {
     if(req.session.username == req.params.username){
-      res.render('useredit', { js: '/public/javascripts/galeria.js', name:"user" ,username:req.session.username,user:req.params.username});
-    }else{
-    res.render('user', { js: '/javascripts/galeria.js', name:"user" ,username:req.session.username,user:req.params.username});}
-  else
-    res.render('unauthorized', { js: '/javascripts/login.js',name:"galeria",username:req.session.username });
+      res.render('useredit', { js: '/javascripts/galeria.js',  username:req.session.username,user:req.params.username});
+    }else
+    {
+    res.render('user', { js: '/javascripts/galeria.js' ,username:req.session.username,user:req.params.username});
+  }
+  }
+  else{
+    res.render('unauthorized', { js: '/javascripts/no_script.js',name:"galeria",username:req.session.username });
+  }
 
 })
 
-router.get('/getphotos',(req,res)=>{
-  res.send("aaaaa")
+
+
+router.get('/getphotos/:user', async (req,res)=>{
+
+  username = req.params.user
+  try{
+
+    folderpath = pathlib.join(__dirname,
+      '../public/images/users/'+username+"/").split("%20").join(" ");
+    if(!fs.existsSync(folderpath))
+    {
+      res.json("")
+      return
+    }
+    fs.readdir(folderpath,(err,names)=>{
+      console.log(names)
+      const files = names.map(function (filename) {
+        filepath = folderpath + '/' + filename;
+        return {name:filename.slice(0,filename.length-pathlib.extname(filename).length),img:fs.readFileSync(filepath),ext:pathlib.extname(filename)}; //updated here
+      });
+      console.log("Sending Images")
+      res.json(files)
+    })
+
+  }catch(ex){
+    console.log("ERROR while reading image dir!",ex)
+  }
+
+
 })
 
 var upload = multer({
@@ -43,13 +75,18 @@ var upload = multer({
   }
 });
 
-router.post('/:username/upload',upload.single("photo"),(req,res)=>{
-  console.log("Trying to save an img")
+router.post('/user/:username/upload',upload.single("photo"),(req,res)=>{
+  console.log("Trying to save an img",req.body)
 
+  //Sprawdza czy poprawny uzytkownik probuje wyslac zdjecie
   if(!req.session.authorized){
+    console.log("Not authorized")
     res.end()
-  return}
-
+  return}else if(req.session.username != req.params.username){
+    console.log("Wrong user!",req)
+    res.end()  
+    return
+  }
   const filepath = path+"users/"+req.session.username
   if (!fs.existsSync(filepath)){
     fs.mkdirSync(filepath);
