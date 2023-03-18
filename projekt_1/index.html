@@ -3,11 +3,9 @@
     <head>
         <title>Strona</title>
         <meta name="description" content="pierwsza strona na technikach www"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css"/>
-        <script src="script.js"></script>
+        <script type="module" src="/scripts/index.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     </head>
     <body>
@@ -15,26 +13,24 @@
         <header>
             <h1 class="headerElement">Logo</h1>
             <nav class="headerElement">
-                <a href="index.html" class="activelink" >Strona Glowna</a>
+                <a href="index.html" class="active-link" >Strona Glowna</a>
                 <a href="sec.html" > Druga</a>
-                <a href="sec.html" > Trzecia</a>
+                <a href="galeria.html" > Galeria</a>
 
             </nav>
         </header>
         <div id="content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper vestibulum lacus, vitae faucibus odio rhoncus sit amet. Donec vitae lobortis lacus. Aliquam et odio accumsan, tincidunt mauris pulvinar, efficitur tortor. Pellentesque molestie lacus in sem tincidunt lacinia. Praesent pellentesque libero tellus, quis tempor turpis tempus ut. Nunc a neque risus. Praesent venenatis, odio vitae malesuada elementum, leo odio molestie ligula, eu ultricies felis neque id eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus rutrum non dolor sed consectetur. Suspendisse sollicitudin metus a nulla lobortis, venenatis hendrerit risus ultrices.
-                
             Etiam nec nibh congue, hendrerit dolor quis, bibendum augue. Donec bibendum lacus sed erat malesuada, quis aliquam diam eleifend. Sed ac porta risus, eget fringilla mi. Suspendisse interdum eget ex ut elementum. Sed fringilla placerat cursus. Nam iaculis, sem a pretium sollicitudin, ligula urna dapibus enim, sed venenatis est sem nec dolor. Fusce et pharetra magna. Praesent augue nisl, euismod vitae pellentesque non, iaculis id risus. Donec at blandit velit. Nam eu erat condimentum, rhoncus odio vitae, dictum leo. Aliquam erat volutpat. Donec sollicitudin lorem nec mi consequat iaculis. Curabitur ut fringilla nunc. Vestibulum mattis nisi metus, vel fringilla erat fermentum vitae. Praesent id nulla eu lectus semper porttitor. Nulla molestie arcu nec sapien mollis feugiat id varius sapien.
             </p>
-
             <div id="gallery" >
                 <div id="imgbox">
-                    <img id="image" src="/src/img/obrazy/dali.jpg" onclick="onImgClick()" onload="onGalleryLoad()"/>
+                    <img id="image" src="./src/img/obrazy/dali.jpg" />
                 </div>
-                <div class="arrow" id="arrow-left" onclick="previmg()"> <p>&lt</p></div>
-                <div class = "arrow" id="arrow-right" onclick="nextimg()"> <p>&gt</p></div>
-
+                <div class="arrow" id="arrow-left" > <p>&lt</p></div>
+                <div class = "arrow" id="arrow-right" > <p>&gt</p></div>
             </div>
+            <div id="painting-title"></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper vestibulum lacus, vitae faucibus odio rhoncus sit amet. Donec vitae lobortis lacus. Aliquam et odio accumsan, tincidunt mauris pulvinar, efficitur tortor. Pellentesque molestie lacus in sem tincidunt lacinia. Praesent pellentesque libero tellus, quis tempor turpis tempus ut. Nunc a neque risus. Praesent venenatis, odio vitae malesuada elementum, leo odio molestie ligula, eu ultricies felis neque id eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus rutrum non dolor sed consectetur. Suspendisse sollicitudin metus a nulla lobortis, venenatis hendrerit risus ultrices.
 
                 Etiam nec nibh congue, hendrerit dolor quis, bibendum augue. Donec bibendum lacus sed erat malesuada, quis aliquam diam eleifend. Sed ac porta risus, eget fringilla mi. Suspendisse interdum eget ex ut elementum. Sed fringilla placerat cursus. Nam iaculis, sem a pretium sollicitudin, ligula urna dapibus enim, sed venenatis est sem nec dolor. Fusce et pharetra magna. Praesent augue nisl, euismod vitae pellentesque non, iaculis id risus. Donec at blandit velit. Nam eu erat condimentum, rhoncus odio vitae, dictum leo. Aliquam erat volutpat. Donec sollicitudin lorem nec mi consequat iaculis. Curabitur ut fringilla nunc. Vestibulum mattis nisi metus, vel fringilla erat fermentum vitae. Praesent id nulla eu lectus semper porttitor. Nulla molestie arcu nec sapien mollis feugiat id varius sapien.
@@ -44,8 +40,8 @@
             @ 2022 Mateusz Dyszewski
         </footer>
      
-        <div id="popup-container"  onclick="hidePopup()" >
-                <div id="img-popup"><img id="img-in-pop" src="/src/img/obrazy/dali.jpg" onclick="event.stopPropagation()" />
+        <div id="popup-container"  >
+                <div id="img-popup"><img id="img-in-pop" src="./src/img/obrazy/dali.jpg" onclick="event.stopPropagation()" />
                 <span id="closebtn" >x</span></div>
         </div>
     </body>
